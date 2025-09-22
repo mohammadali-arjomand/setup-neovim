@@ -6,4 +6,10 @@ If you're using old version of neo vim (older than 0.11.x) download the latest .
 
 > Using `tilix terminal` is also recommended
 
+## Quick Installtion
+Enter this command into your terminal and enter your root password to install everything quickly
+```bash
+wget --quiet -O- https://raw.githubusercontent.com/mohammadali-arjomand/setup-neovim/refs/heads/main/qi.sh | bash
+```
+
 Enjoy!
