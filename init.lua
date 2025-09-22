@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
+vim.api.nvim_set_keymap('n', '<F5>', ':w<CR>:terminal car % --short<CR>i<CR>', { noremap = true, silent = false })
 -- =========================
 -- Plugins
 -- =========================
@@ -29,6 +29,34 @@ require("lazy").setup({
   { "lewis6991/gitsigns.nvim", lazy = false },
   { "nvim-lualine/lualine.nvim", dependencies = "nvim-tree/nvim-web-devicons", lazy = false },
   { "folke/tokyonight.nvim", lazy = false },
+  {
+    "navarasu/onedark.nvim",
+    lazy = false,  -- Load هنگام استارت
+    config = function()
+      require('onedark').setup {
+        style = 'darker',  -- سبک تم: dark, darker, cool, deep, warm, warmer, light
+        transparent = false,
+      }
+      require('onedark').load()
+    end
+  },
+  {
+    "windwp/nvim-autopairs",
+    lazy = false,
+    config = function()
+    require("nvim-autopairs").setup({
+        check_ts = true,        -- هماهنگی با treesitter
+        enable_check_bracket_line = true,
+    })
+    end
+  },
+    {
+      "MeanderingProgrammer/markdown.nvim",
+      ft = "markdown",
+      config = function()
+        require("markdown").setup({})
+      end,
+    } 
 })
 
 -- =========================
@@ -51,6 +79,17 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true },
   indent = { enable = true },
 }
+
+vim.keymap.set({"n", "i"}, "<Home>", function()
+  local col = vim.fn.col(".")
+  local first_non_blank = vim.fn.col("'^")
+  if col == first_non_blank then
+    return "<Home>"
+  else
+    return "0^"
+  end
+end, {expr = true, noremap = true})
+
 
 -- =========================
 -- LSP Setup
