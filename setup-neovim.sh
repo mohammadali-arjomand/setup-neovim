@@ -9,7 +9,8 @@ sudo apt install -y git curl build-essential cmake ninja-build nodejs npm python
 # ==========================
 if ! command -v nvim &> /dev/null; then
     echo "=== Installing Neovim ==="
-    sudo apt install -y neovim
+    wget https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-x86_64.appimage
+    mv nvim-linux-x86_64.appimage /usr/bin/nvim
 else
     echo "Neovim already installed"
 fi
