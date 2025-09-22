@@ -13,6 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 vim.api.nvim_set_keymap('n', '<F5>', ':w<CR>:terminal car % --short<CR>i<CR>', { noremap = true, silent = false })
+
+-- copy using leader+y
+vim.keymap.set({"n", "v"}, "<leader>y", '"+y')
+
+-- paste using leader+p
+vim.keymap.set("n", "<leader>p", '"+p')
 -- =========================
 -- Plugins
 -- =========================

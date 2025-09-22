@@ -3,8 +3,7 @@ set -e
 
 echo "=== Updating system and installing essential packages ==="
 sudo apt update
-sudo apt install -y git curl build-essential cmake ninja-build nodejs npm python3 python3-pip python3-venv python3-dev lua5.4 unzip php-cli g++ wget
-
+sudo apt install -y git curl build-essential cmake ninja-build nodejs npm python3 python3-pip python3-venv python3-dev lua5.4 unzip php-cli g++ wget xclip xsel wl-clipboard
 # ==========================
 # Neovim
 # ==========================
