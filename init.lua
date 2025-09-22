@@ -85,16 +85,16 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true },
   indent = { enable = true },
 }
-
-vim.keymap.set({"n", "i"}, "<Home>", function()
-  local col = vim.fn.col(".")
-  local first_non_blank = vim.fn.col("'^")
-  if col == first_non_blank then
-    return "<Home>"
-  else
-    return "0^"
-  end
-end, {expr = true, noremap = true})
+-- Smart Home
+--vim.keymap.set({"n", "i"}, "<Home>", function()
+--  local col = vim.fn.col(".")
+--  local first_non_blank = vim.fn.col("'^")
+--  if col == first_non_blank then
+--    return "<Home>"
+--  else
+--    return "0^"
+--  end
+--end, {expr = true, noremap = true})
 
 
 -- =========================
