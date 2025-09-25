@@ -12,7 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.api.nvim_set_keymap('n', '<F5>', ':w<CR>:terminal car % --short<CR>i<CR>', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<F5>', ':w<CR>:terminal car % --short<CR>i', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<F6>', ':w<CR>:terminal car % --short<CR>"+p i<CR>', { noremap = true, silent = false })
 
 -- copy using leader+y
 vim.keymap.set({"n", "v"}, "<leader>y", '"+y')
@@ -62,7 +63,14 @@ require("lazy").setup({
       config = function()
         require("markdown").setup({})
       end,
-    } 
+    },
+    {
+      "github/copilot.vim",
+      config = function()
+        vim.g.copilot_no_tab_map = false
+        vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      end,
+    }
 })
 
 -- =========================
